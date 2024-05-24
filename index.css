@@ -73,13 +73,13 @@ a {
 .main a {
     padding: 15px 25px;
     border-radius: 5px;
-    background-color: #28a745;
+    background-color: #4cae49;
     color: #fff;
     transition: background-color 0.3s;
 }
 
 .main a:hover {
-    background-color: #218838;
+    background-color: #4cae49;
 }
 
 /* Map section styles */
