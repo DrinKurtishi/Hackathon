@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pollution Map</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #map-container {
+            margin: 20px; /* Add margin to the sides */
+        }
+        #map {
+            height: 600px; /* Increase map height */
+            width: calc(100% - 40px); /* Calculate width to account for margins */
+        }
+        .report-section {
+            margin: 20px;
+        }
+        .report-section h2 {
+            background-color: #f2f2f2;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        .report-section div {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    </style>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+</head>
+<body>
+    <h1>Pollution Map</h1>
+    <div id="map-container">
+        <div id="map"></div>
+    </div>
+
+    <div class="report-section">
+        <h2>Recent Reports</h2>
+        <div>
+            <!-- Content for Recent Reports -->
+            <p>Location: Downtown, Description: Recent increase in pollution levels</p>
+            <p>Location: Riverfront, Description: Pollution from untreated sewage</p>
+        </div>
+    </div>
+
+    <div class="report-section">
+        <h2>High Pollution Areas</h2>
+        <div>
+            <!-- Content for High Pollution Areas -->
+            <p>Location: Downtown, Description: High pollution level due to traffic congestion</p>
+            <p>Location: Industrial Zone, Description: High pollution level due to factory emissions</p>
+        </div>
+    </div>
+
+    <div class="report-section">
+        <h2>Moderate Pollution Areas</h2>
+        <div>
+            <!-- Content for Moderate Pollution Areas -->
+            <p>Location: Northern District, Description: Moderate pollution level due to mixed residential and commercial activities</p>
+        </div>
+    </div>
+
+    <div class="report-section">
+        <h2>Low Pollution Areas</h2>
+        <div>
+            <!-- Content for Low Pollution Areas -->
+            <p>Location: Southern District, Description: Low pollution level due to green spaces and parks</p>
+        </div>
+    </div>
+
+    <script>
+        var customTileUrl = 'https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=YU0nMzmc7SK7zOS9nBks';
+
+        var platform = new H.service.Platform({
+            'apikey': 'YU0nMzmc7SK7zOS9nBks'
+        });
+
+        var maptypes = platform.createDefaultLayers();
+
+        var customProvider = new H.map.provider.ImageTileProvider({
+            getURL: function (column, row, zoom) {  
+                return customTileUrl
+                    .replace('{z}', zoom)
+                    .replace('{x}', column)
+                    .replace('{y}', row);
+            },
+            tileSize: 256,
+            max: 20
+        });
+
+        var customLayer = new H.map.layer.TileLayer(customProvider, {
+            tileSize: 256
+        });
+
+        var map = new H.Map(
+            document.getElementById('map'),
+            customLayer,
+            {
+                zoom: 10,
+                center: { lat: 42.0069, lng: 20.9716 },
+                pixelRatio: window.devicePixelRatio || 1
+            });
+
+        var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+        var ui = H.ui.UI.createDefault(map, maptypes);
+
+    </script>
+</body>
+</html>
