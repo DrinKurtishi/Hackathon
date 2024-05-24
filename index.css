@@ -1,0 +1,116 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header styles */
+.header {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.header .logo {
+    display: inline-block;
+}
+
+.header .about_us,
+.header .hall_of_fame {
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 18px;
+    vertical-align: top;
+}
+
+.header .about_us a,
+.header .hall_of_fame a {
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.header .about_us a:hover,
+.header .hall_of_fame a:hover {
+    background-color: #0056b3;
+}
+
+/* Main section styles */
+.main {
+    background-color: #f1f1f1;
+    padding: 40px 0;
+}
+
+.main .report_issue,
+.main .view_reports {
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 18px;
+}
+
+.main .report_issue a,
+.main .view_reports a {
+    padding: 15px 25px;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.main .report_issue a:hover,
+.main .view_reports a:hover {
+    background-color: #218838;
+}
+
+/* Map section styles */
+.map {
+    background-color: #ffffff;
+    padding: 60px 0;
+}
+
+.map .worst_hotspots {
+    height: 400px;
+    background-color: #e9ecef;
+    border-radius: 10px;
+}
+
+/* Footer styles */
+.footer {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer .about,
+.footer .copyright,
+.footer .probably-logo,
+.footer .members,
+.footer .achievements {
+    display: inline-block;
+    margin: 10px 20px;
+    font-size: 16px;
+}
+
+.footer .about:hover,
+.footer .copyright:hover,
+.footer .probably-logo:hover,
+.footer .members:hover,
+.footer .achievements:hover {
+    color: #adb5bd;
+}
