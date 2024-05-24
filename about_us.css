@@ -36,7 +36,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin: 10px;
     width: calc(25% - 40px);
-    padding: 20px;
+    padding: 10px;
     text-align: center;
 }
 
