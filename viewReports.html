@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pollution Map</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #map-container {
+            margin: 50px; /* Add more margin to the sides */
+            height: 800px; /* Increase map container height */
+        }
+        #map {
+            height: 100%; /* Use full height of map container */
+            width: 100%; /* Use full width of map container */
+        }
+        .report-section {
+            margin: 20px;
+        }
+        .report-section h2 {
+            background-color: #f2f2f2;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        .report-section div {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    </style>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+</head>
+<body>
+    <h1>Pollution Map</h1>
+    <div id="map-container">
+        <div id="map"></div>
+    </div>
+
+    <div class="report-section">
+        <h2>Recent Reports</h2>
+        <div>
+            <!-- Content for Recent Reports -->
+            <p id="report1" style="display: none;">Location: Downtown, Description: Recent increase in pollution levels</p>
+            <p id="report2" style="display: none;">Location: Riverfront, Description: Pollution from untreated sewage</p>
+        </div>
+    </div>
+
+    <div class="report-section High-section">
+        <h2>High Reports</h2>
+        <div>
+            <!-- Content for High Reports -->
+            <p id="high-report1" style="display: none;">Location: Downtown, Description: High pollution levels</p>
+            <p id="high-report2" style="display: none;">Location: Riverfront, Description: High pollution from industrial area</p>
+        </div>
+    </div>
+
+    <div class="report-section Low-section">
+        <h2>Low Reports</h2>
+        <div>
+            <!-- Content for Low Reports -->
+            <p id="low-report1" style="display: none;">Location: Park, Description: Low pollution levels</p>
+            <p id="low-report2" style="display: none;">Location: Residential area, Description: Low pollution from traffic</p>
+        </div>
+    </div>
+
+    <script>
+        var customTileUrl = 'https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=YU0nMzmc7SK7zOS9nBks';
+
+        var platform = new H.service.Platform({
+            'apikey': 'YU0nMzmc7SK7zOS9nBks'
+        });
+
+        var maptypes = platform.createDefaultLayers();
+
+        var customProvider = new H.map.provider.ImageTileProvider({
+            getURL: function (column, row, zoom) {  
+                return customTileUrl
+                    .replace('{z}', zoom)
+                    .replace('{x}', column)
+                    .replace('{y}', row);
+            },
+            tileSize: 256,
+            max: 20
+        });
+
+        var customLayer = new H.map.layer.TileLayer(customProvider, {
+            tileSize: 256
+        });
+
+        var map = new H.Map(
+            document.getElementById('map'),
+            customLayer,
+            {
+                zoom: 12, // Adjust zoom level to crop to desired region
+                center: { lat: 42.0069, lng: 20.9716 }, // Center the map on the desired coordinates
+                pixelRatio: window.devicePixelRatio || 1
+            });
+
+        var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+        var ui = H.ui.UI.createDefault(map, maptypes);
+
+        // Create custom icon for markers
+        var icon = new H.map.Icon('path_to_custom_marker.png', {size: {w: 32, h: 32}});
+
+        // Create markers for pollution hotspots with custom icons
+        var markers = [
+            { lat: 42.005, lng: 20.970, report: "report1" },
+            { lat: 42.007, lng: 20.975, report: "report2" },
+            { lat: 42.010, lng: 20.980, report: "high-report1" },
+            { lat: 42.015, lng: 20.985, report: "high-report2" },
+            { lat: 42.000, lng: 20.965, report: "low-report1" },
+            { lat: 42.002, lng: 20.972, report: "low-report2" }
+        ];
+
+        markers.forEach(function(marker) {
+            var newMarker = new H.map.Marker({lat: marker.lat, lng: marker.lng}, {icon: icon});
+            map.addObject(newMarker);
+
+            // Add click event listener to show report
+            newMarker.addEventListener('tap', function(evt) {
+                document.getElementById(marker.report).style.display = "block";
+            });
+        });
+
+    </script>
+</body>
+</html>
