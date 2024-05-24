@@ -11,11 +11,11 @@
             padding: 0;
         }
         #map-container {
-            margin: 20px; /* Add margin to the sides */
+            margin: 50px; /* Add more margin to the sides */
         }
         #map {
-            height: 600px; /* Increase map height */
-            width: calc(100% - 40px); /* Calculate width to account for margins */
+            height: 600px; /* Keep map height */
+            width: calc(100% - 100px); /* Calculate width to account for increased margins */
         }
         .report-section {
             margin: 20px;
@@ -34,6 +34,7 @@
     <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
 </head>
 <body>
+<<<<<<< HEAD
     <h1>Pollution Map</h1>
     <div id="map-container">
         <div id="map"></div>
@@ -45,6 +46,19 @@
             <!-- Content for Recent Reports -->
             <p>Location: Downtown, Description: Recent increase in pollution levels</p>
             <p>Location: Riverfront, Description: Pollution from untreated sewage</p>
+=======
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="homepage_photos/Logo.png" height="80px" alt="Logo">
+            </div>
+            <div class="about_us">
+                <a href="about_us.html">About us</a>
+            </div>
+            <div class="hall_of_fame">
+                <a href="hall_of_fame.html">Hall of fame</a>
+            </div>
+>>>>>>> 9424fcf9cbbc42c6adc027cbf38882309da9455c
         </div>
     </div>
 
@@ -76,9 +90,9 @@
     <script>
         var customTileUrl = 'https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=YU0nMzmc7SK7zOS9nBks';
 
-        var platform = new H.service.Platform({
-            'apikey': 'YU0nMzmc7SK7zOS9nBks'
-        });
+var platform = new H.service.Platform({
+    'apikey': 'YU0nMzmc7SK7zOS9nBks'
+});
 
         var maptypes = platform.createDefaultLayers();
 
@@ -101,8 +115,8 @@
             document.getElementById('map'),
             customLayer,
             {
-                zoom: 10,
-                center: { lat: 42.0069, lng: 20.9716 },
+                zoom: 15, // Increase the zoom level for a more zoomed-in view
+                center: { lat: 42.0069, lng: 20.9716 }, // Center the map on the desired coordinates
                 pixelRatio: window.devicePixelRatio || 1
             });
 
