@@ -12,10 +12,11 @@
         }
         #map-container {
             margin: 50px; /* Add more margin to the sides */
+            height: 800px; /* Increase map container height */
         }
         #map {
-            height: 600px; /* Keep map height */
-            width: calc(100% - 100px); /* Calculate width to account for increased margins */
+            height: 100%; /* Use full height of map container */
+            width: 100%; /* Use full width of map container */
         }
         .report-section {
             margin: 20px;
@@ -32,6 +33,7 @@
     </style>
     <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
     <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
 </head>
 <body>
     <h1>Pollution Map</h1>
@@ -45,6 +47,8 @@
             <!-- Content for Recent Reports -->
             <p>Location: Downtown, Description: Recent increase in pollution levels</p>
             <p>Location: Riverfront, Description: Pollution from untreated sewage</p>
+        </div>
+    </div>
 
     <div class="report-section">
         <h2>High Pollution Areas</h2>
@@ -74,9 +78,9 @@
     <script>
         var customTileUrl = 'https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=YU0nMzmc7SK7zOS9nBks';
 
-var platform = new H.service.Platform({
-    'apikey': 'YU0nMzmc7SK7zOS9nBks'
-});
+        var platform = new H.service.Platform({
+            'apikey': 'YU0nMzmc7SK7zOS9nBks'
+        });
 
         var maptypes = platform.createDefaultLayers();
 
@@ -99,7 +103,7 @@ var platform = new H.service.Platform({
             document.getElementById('map'),
             customLayer,
             {
-                zoom: 15, // Increase the zoom level for a more zoomed-in view
+                zoom: 12, // Adjust zoom level to crop to desired region
                 center: { lat: 42.0069, lng: 20.9716 }, // Center the map on the desired coordinates
                 pixelRatio: window.devicePixelRatio || 1
             });
