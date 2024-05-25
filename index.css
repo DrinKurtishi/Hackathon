@@ -24,17 +24,38 @@ a {
     background-color: #f8f9fa;
     padding: 20px 0;
     border-bottom: 1px solid #e0e0e0;
+    background-color: #172621;
 }
 
 .header .container {
+    display: flex;
     justify-content: space-between;
+    flex:2;
     align-items: center;
-    gap: 50px;
 }
 
-.header .logo {
-    flex: 1;
+.logo_part, .list_part{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    color: white;
 }
+
+.name{
+    font-family: "Garamond", "Georgia", serif;
+    font-size: 1.5em;
+    font-weight: 900;
+    color: #75A808;
+}
+
+.about_us {
+    color: white;
+}
+
+/* .header .logo {
+    flex: 1;
+} */
 
 .header .navigation {
     display: flex;
@@ -53,58 +74,79 @@ a {
 .header .navigation a:hover {
     background-color: #0056b3;
 }
+.about_us a {
+    padding: 15px 25px;
+    border-radius: 30px;
+    background-color: #75A808;
+    color: #172621;
+    transition: background-color 0.3s;
+}
+.about_us a:hover{
+    background-color: #172621;
+    color: #75A808;
+}
 
 /* Main section styles */
 .main {
-    background-color: #f1f1f1;
-    padding: 40px 0;
+    background-color: #ffffff;
+    padding: 60px 0; 
+    /* Set background image */
+    background-image: url('APTE.svg');
+    /* Set background size and positioning */
+    background-size: cover;
+    background-position: center;
+    /* Set opacity */
+    opacity: 0.8;
 }
 
 .main .container {
+    flex-direction:column;
     justify-content: space-around;
     align-items: center;
 }
 
 .main .report_issue,
 .main .view_reports {
+    margin-left: 250px;
+    margin-bottom: 20px;
     font-size: 18px;
 }
 
-.main a {
+.reports{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 30px;
+    margin-right: 250px;
+}
+
+.report_issue a,
+.view_reports a {
+    display: inline-block;
     padding: 15px 25px;
-    border-radius: 5px;
-    background-color: #056602;
-    color: #fff;
+    border-radius: 30px;
+    background-color: #172621;
+    color: white;
     transition: background-color 0.3s;
 }
 
-.main a:hover {
-    background-color: #23c61d;
+.report_issue a:hover,
+.view_reports a:hover {
+    color:#75A808;
 }
 
-/* Map section styles */
-.map {
-    background-color: #ffffff;
-    padding: 60px 0;
-}
-
-.map .container {
-    justify-content: center;
-    align-items: center;
-}
-
-.map .worst_hotspots {
+.worst_hotspots {
     width: 100%;
-    height: 400px;
-    background-color: #e9ecef;
-    border-radius: 10px;
+    height: 600px;
+    background-color: #e9ecef; /* Fallback background color */
+    border-radius: 2px;
 }
+
 
 /* Footer styles */
 .footer {
-    background-color: #056602;
+    background-color: #172621;
     color: #ffffff;
-    padding: 40px 0;
+    padding: 25px 0;
 }
 
 .footer .container {
@@ -126,5 +168,5 @@ a {
 .footer .probably-logo:hover,
 .footer .members:hover,
 .footer .achievements:hover {
-    color: #adb5bd;
+    color: #75A808;
 }

@@ -13,11 +13,12 @@ body {
     flex-wrap: wrap;
 }
 
-.header {
+.nav {
     text-align: center;
     padding: 50px 0;
-    background-color: #056602;
+    background-color: #172621;
     color: white;
+    font-family: Georgia, serif;
     width: 100%;
 }
 
@@ -91,9 +92,9 @@ body {
 
 /* Footer styles */
 .footer {
-    background-color: #056602;
+    background-color: #172621;
     color: #ffffff;
-    padding: 40px 0;
+    padding: 25px 0;
 }
 
 .footer .container {
@@ -115,7 +116,7 @@ body {
 .footer .probably-logo:hover,
 .footer .members:hover,
 .footer .achievements:hover {
-    color: #adb5bd;
+    color: #75A808;
 }
 
 @media (max-width: 768px) {
